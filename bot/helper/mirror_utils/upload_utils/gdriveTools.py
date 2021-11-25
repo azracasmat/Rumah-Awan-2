@@ -122,16 +122,16 @@ class GoogleDriveHelper:
         try:
             file_id = self.getIdFromUrl(link)
         except (KeyError,IndexError):
-            msg = "Google Drive ID could not be found in the provided link"
+            msg = "𝙸𝙳 𝙶𝚘𝚘𝚐𝚕𝚎 𝙳𝚛𝚒𝚟𝚎 𝚝𝚒𝚍𝚊𝚔 𝚍𝚊𝚙𝚊𝚝 𝚍𝚒𝚝𝚎𝚖𝚞𝚔𝚊𝚗 𝚍𝚒 𝚝𝚊𝚞𝚝𝚊𝚗 𝚢𝚊𝚗𝚐 𝚔𝚊𝚖𝚞 𝚜𝚎𝚍𝚒𝚊𝚔𝚊𝚗"
             return msg
         msg = ''
         try:
             res = self.__service.files().delete(fileId=file_id, supportsTeamDrives=IS_TEAM_DRIVE).execute()
-            msg = "Successfully deleted"
+            msg = "𝙱𝚎𝚛𝚑𝚊𝚜𝚒𝚕 𝚍𝚒𝚑𝚊𝚙𝚞𝚜"
         except HttpError as err:
             LOGGER.error(str(err))
-            if "File not found" in str(err):
-                msg = "No such file exist"
+            if "𝙱𝚎𝚛𝚔𝚊𝚜 𝚝𝚒𝚍𝚊𝚔 𝚍𝚒𝚝𝚎𝚖𝚞𝚔𝚊𝚗" in str(err):
+                msg = "𝚃𝚒𝚍𝚊𝚔 𝚊𝚍𝚊 𝚏𝚒𝚕𝚎 𝚜𝚎𝚙𝚎𝚛𝚝𝚒 𝚒𝚝𝚞"
             else:
                 msg = "Something went wrong check log"
         finally:
@@ -165,7 +165,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': '👨‍🦰 ᴜᴘʟᴏᴀᴅᴇᴅ ᴜꜱɪɴɢ ᴘʀɪɪɪɪʏᴏ ᴍɪʀʀᴏʀ ʟᴇᴇᴄʜ ʙᴏᴛ',
+            'description': '𝚄𝙿𝙻𝙾𝙰𝙳𝙴𝙳 𝚄𝚂𝙸𝙽𝙶 𝙰𝚆𝙰𝙽 𝙼𝙸𝚁𝚁𝙾𝚁 𝙱𝙾𝚃',
             'mimeType': mime_type,
         }
         try:
@@ -376,10 +376,10 @@ class GoogleDriveHelper:
                     msg = self.deletefile(durl)
                     LOGGER.info(f"{msg}")
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
-                msg += f'<b>🗂️ ꜰɪʟᴇɴᴀᴍᴇ : </b><code>{meta.get("name")}</code>\n<b>📦 ꜱɪᴢᴇ : </b><code>{get_readable_file_size(self.transferred_size)}</code>'
-                msg += f'\n<b>⚙️ ᴛʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>📚 ꜱᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
-                msg += f'\n<b>📁 ꜰɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                msg += f'<b>🗂️ 𝐍𝐚𝐦𝐚 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{meta.get("name")}</code>\n<b>📦 𝐔𝐤𝐮𝐫𝐚𝐧 : </b><code>{get_readable_file_size(self.transferred_size)}</code>'
+                msg += f'\n<b>⚙️ 𝐉𝐞𝐧𝐢𝐬 : </b><code>Folder</code>'
+                msg += f'\n<b>📚 𝐒𝐮𝐛 𝐅𝐨𝐥𝐝𝐞𝐫 : </b><code>{self.total_folders}</code>'
+                msg += f'\n<b>📁 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{self.total_files}</code>'
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
                     surl = short_url(durl)
@@ -396,7 +396,7 @@ class GoogleDriveHelper:
                         buttons.buildbutton("💡 ɪɴᴅᴇx ʟɪɴᴋ 💡", url)
             else:
                 file = self.copyFile(meta.get('id'), parent_id)
-                msg += f'<b>🗂️ ꜰɪʟᴇɴᴀᴍᴇ : </b><code>{file.get("name")}</code>'
+                msg += f'<b>🗂️ 𝐍𝐚𝐦𝐚 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{file.get("name")}</code>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
@@ -409,8 +409,8 @@ class GoogleDriveHelper:
                 except:
                     typ = 'File'
                 try:
-                    msg += f'\n<b>📦 ꜱɪᴢᴇ : </b><code>{get_readable_file_size(int(meta.get("size")))}</code>'
-                    msg += f'\n<b>⚙️ ᴛʏᴘᴇ : </b><code>{typ}</code>'
+                    msg += f'\n<b>📦 𝐔𝐤𝐮𝐫𝐚𝐧 : </b><code>{get_readable_file_size(int(meta.get("size")))}</code>'
+                    msg += f'\n<b>⚙️ 𝐉𝐞𝐧𝐢𝐬 : </b><code>{typ}</code>'
                 except TypeError:
                     pass
                 if INDEX_URL is not None:
@@ -480,7 +480,7 @@ class GoogleDriveHelper:
     def create_directory(self, directory_name, parent_id):
         file_metadata = {
             "name": directory_name,
-            "description": "👨‍🦱 ᴜᴘʟᴏᴀᴅᴇᴅ ʙʏ ᴘʀɪɪɪɪʏᴏ ᴍɪʀʀᴏʀ ʟᴇᴇᴄʜ ʙᴏᴛ",
+            "description": "𝚄𝙿𝙻𝙾𝙰𝙳𝙴𝙳 𝚄𝚂𝙸𝙽𝙶 𝙰𝚆𝙰𝙽 𝙼𝙸𝚁𝚁𝙾𝚁 𝙱𝙾𝚃",
             "mimeType": self.__G_DRIVE_DIR_MIME_TYPE
         }
         if parent_id is not None:
@@ -577,9 +577,9 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = '💞 ᴘʀɪɪɪɪʏᴏ ᴍɪʀʀᴏʀʙᴏᴛ ꜱᴇᴀʀᴄʜ',
-                                 author_name='💓 ᴘʀɪɪɪɪʏᴏ ᴍɪʀʀᴏʀʙᴏᴛ',
-                                 author_url='https://github.com/PriiiiyoDevs/priiiiyo-mirrorbot',
+                                 title = 'Rumah Awan Search',
+                                 author_name='Awan 2 Bot',
+                                 author_url='https://t.me/awanmirror2bot',
                                  html_content=content)
         return
 
@@ -699,7 +699,7 @@ class GoogleDriveHelper:
             elif not response["files"]:
                 continue
             if not Title:
-                msg += f'<h4>✅ Search Result For: {fileName}</h4><br><br>'
+                msg += f'<h4>✅ 𝐇𝐚𝐬𝐢𝐥 𝐏𝐞𝐧𝐜𝐚𝐫𝐢𝐚𝐧 𝐔𝐧𝐭𝐮𝐤: {fileName}</h4><br><br>'
                 Title = True
             if len(DRIVES_NAMES) > 1 and DRIVES_NAMES[index] is not None:
                 msg += f"╾────────────╼<br><b>{DRIVES_NAMES[index]}</b><br>╾────────────╼<br>"
@@ -774,9 +774,9 @@ class GoogleDriveHelper:
 
         for content in self.telegraph_content :
             self.path.append(Telegraph(access_token=telegraph_token).create_page(
-                                                    title = '💞 ᴘʀɪɪɪɪʏᴏ ᴍɪʀʀᴏʀ ʟᴇᴇᴄʜ ʙᴏᴛ ꜱᴇᴀʀᴄʜ',
-                                                    author_name='💓 ᴘʀɪɪɪɪʏᴏ ᴍɪʀʀᴏʀ ʟᴇᴇᴄʜ ʙᴏᴛ',
-                                                    author_url='https://github.com/PriiiiyoDevs/priiiiyo-mirror-leech-bot',
+                                                    title = 'Rumah Awan Search',
+                                                    author_name='Awan 2 Bot',
+                                                    author_url='https://t.me/awanmirror2bot',
                                                     html_content=content
                                                     )['path'])
 
@@ -784,9 +784,9 @@ class GoogleDriveHelper:
         if self.num_of_path > 1:
             self.edit_telegraph()
 
-        msg = f"<b>✅ Found <code>{all_contents_count}</code> results for <code>{fileName}</code></b>"
+        msg = f"<b>✅ 𝐃𝐢𝐭𝐞𝐦𝐮𝐤𝐚𝐧 <code>{all_contents_count}</code> results for <code>{fileName}</code></b>"
         buttons = button_build.ButtonMaker()
-        buttons.buildbutton("🔎 ᴠɪᴇᴡ", f"https://telegra.ph/{self.path[0]}")
+        buttons.buildbutton("🔎 𝐂𝐞𝐤 𝐇𝐚𝐬𝐢𝐥𝐧𝐲𝐚 𝐁𝐨𝐬𝐬!", f"https://telegra.ph/{self.path[0]}")
 
         return msg, InlineKeyboardMarkup(buttons.build_menu(1))
 
@@ -805,13 +805,13 @@ class GoogleDriveHelper:
             LOGGER.info(f"Counting: {name}")
             if drive_file['mimeType'] == self.__G_DRIVE_DIR_MIME_TYPE:
                 self.gDrive_directory(**drive_file)
-                msg += f'<b>🗂️ ꜰɪʟᴇɴᴀᴍᴇ : </b><code>{name}</code>'
-                msg += f'\n<b>📦 ꜱɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
-                msg += '\n<b>⚙️ ᴛʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>📚 ꜱᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
-                msg += f'\n<b>📁 ꜰɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                msg += f'<b>🗂️ 𝐍𝐚𝐦𝐚 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{name}</code>'
+                msg += f'\n<b>📦 𝐔𝐤𝐮𝐫𝐚𝐧 : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
+                msg += '\n<b>⚙️ 𝐉𝐞𝐧𝐢𝐬 : </b><code>Folder</code>'
+                msg += f'\n<b>📚 𝐒𝐮𝐛 𝐅𝐨𝐥𝐝𝐞𝐫 : </b><code>{self.total_folders}</code>'
+                msg += f'\n<b>📁 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{self.total_files}</code>'
             else:
-                msg += f'<b>🗂️ ꜰɪʟᴇɴᴀᴍᴇ : </b><code>{name}</code>'
+                msg += f'<b>🗂️ 𝐍𝐚𝐦𝐚 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{name}</code>'
                 try:
                     typee = drive_file['mimeType']
                 except:
@@ -819,9 +819,9 @@ class GoogleDriveHelper:
                 try:
                     self.total_files += 1
                     self.gDrive_file(**drive_file)
-                    msg += f'\n<b>📦 ꜱɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
-                    msg += f'\n<b>⚙️ ᴛʏᴘᴇ : </b><code>{typee}</code>'
-                    msg += f'\n<b>📁 ꜰɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                    msg += f'\n<b>📦 𝐔𝐤𝐮𝐫𝐚𝐧 : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
+                    msg += f'\n<b>⚙️ 𝐉𝐞𝐧𝐢𝐬 : </b><code>{typee}</code>'
+                    msg += f'\n<b>📁 𝐁𝐞𝐫𝐤𝐚𝐬 : </b><code>{self.total_files}</code>'
                 except TypeError:
                     pass
         except Exception as err:
